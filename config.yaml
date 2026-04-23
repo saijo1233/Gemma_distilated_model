@@ -1,0 +1,12 @@
+models:
+  - model: ./gemma_qwen3_FULL      # Твоя математическая модель (ДОМИНИРУЮЩАЯ)
+    parameters:
+      density: 1.0                 # Берем 100% ее нейронов
+      weight: 0.85                 # Даем ей 85% силы влияния
+  - model: ./gemma_qwen2.5_FULL    # Твоя модель для тегов (ДОБАВКА)
+    parameters:
+      density: 0.3                 # Берем только топ-30% самых важных изменений (теги)
+      weight: 0.15                 # Даем ей 15% силы влияния
+merge_method: ties
+base_model: google/gemma-3-1b-it
+dtype: bfloat16
